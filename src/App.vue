@@ -56,6 +56,8 @@
 <script>
 import Firebase from 'firebase'
 
+import toastr from 'toastr'
+
 let config = {
   apiKey: "AIzaSyBpyDOKKjzz6BmNgTuK1LwW3KoCwEpCDHM",
   authDomain: "vue-events-f5262.firebaseapp.com",
@@ -91,8 +93,9 @@ export default {
       this.newBook.author = '';
       this.newBook.url = '';
     },
-    removeBook: function(){
+    removeBook: function(book){
       booksRef.child(book['.key']).remove();
+      toastr.success("Book Removed");
     }
   }
 }
